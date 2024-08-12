@@ -35,6 +35,8 @@ Endpoints are secured with java web token. So that bearer token must be received
 
 ### How To Start The Application
 
+All tables will be created and initial values will be inserted when the application starts
+
 The application is containerized and can be executed via docker-compose. Docker must be installed beforehand. The following two commands are enough to start the application.
 
 ```
