@@ -13,6 +13,11 @@ public class StockRepositoryService {
 
     private final StockRepository repository;
 
+    public Stock findByNameWithLock(String stockName) {
+        return repository.findByNameWithLock(stockName)
+                .orElseThrow(() -> new BusinessException(StockBusinessError.STOCK_COULD_NOT_BE_FOUND));
+    }
+
     public Stock findByName(String stockName) {
         return repository.findByName(stockName)
                 .orElseThrow(() -> new BusinessException(StockBusinessError.STOCK_COULD_NOT_BE_FOUND));

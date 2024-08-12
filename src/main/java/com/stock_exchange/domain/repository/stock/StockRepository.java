@@ -17,6 +17,9 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
     @Query("SELECT s FROM stock s LEFT JOIN FETCH s.stockExchanges WHERE s.name = :name")
     Optional<Stock> findByNameWithStockExchanges(String name);
 
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    Optional<Stock> findByNameWithLock(String name);
+
     Optional<Stock> findByName(String name);
 
 }

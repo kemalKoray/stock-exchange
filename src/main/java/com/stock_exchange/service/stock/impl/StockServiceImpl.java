@@ -37,7 +37,7 @@ public class StockServiceImpl implements StockService {
     @Override
     @Transactional
     public void updatePrice(String stockName, StockPriceUpdateRequest request) {
-        Stock stock = stockRepositoryService.findByName(stockName);
+        Stock stock = stockRepositoryService.findByNameWithLock(stockName);
         stock.updatePrice(request.getPrice());
         stockRepositoryService.save(stock);
     }
