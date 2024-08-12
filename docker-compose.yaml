@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    image: stock-exchange
+    container_name: stock-exchange-app
+    ports:
+      - "8080:8080"  # Maps port 8080 on the host to port 8080 in the container
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=pass
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13  # Use a specific version of PostgreSQL
+    container_name: postgres-db
+    ports:
+      - "5432:5432"  # Maps port 5432 on the host to port 5432 in the container
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist database data
+
+volumes:
+  postgres_data:
+    driver: local
