@@ -29,7 +29,7 @@ PostgreSQL is used as db and operates on port 5432.
 
 Swagger is used in this application and Swagger UI can be reached through 'http://localhost:8080/swagger-ui/index.html' after the application has started.
 
-Endpoints are secured with java web token. So that bearer token must be received through /authenticate endpoint with the following credentials
+Endpoints are secured with java web token. So that access token must be received through /authenticate endpoint with the following credentials
 * username : ing
 * password : password
 
