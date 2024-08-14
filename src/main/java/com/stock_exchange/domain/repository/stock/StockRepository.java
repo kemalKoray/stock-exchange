@@ -18,6 +18,7 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
     Optional<Stock> findByNameWithStockExchanges(String name);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT s FROM stock s WHERE s.name = :name")
     Optional<Stock> findByNameWithLock(String name);
 
     Optional<Stock> findByName(String name);
